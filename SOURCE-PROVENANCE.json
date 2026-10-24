@@ -8043,12 +8043,14 @@
     "docs/dsh-companion-interactions.md": "7c389729e52657f175608160b7443e756be5d1965347f5ba24b47e60866f3c6c",
     "docs/dsh-display-calibration.md": "9a74a8c3de117e381207d3afbc9c41bee89c0360361eec6b693ea4db86406694",
     "tests/approved-motion-pack.mjs": "80cb88c7b03c757271fa96a88e83454f4e5d41ee127db981830062d1b8072ede",
-    "scripts/encode_indexed_binary.py": "edb3865d5107588c9ccc1dfe9aaf973eb2c3de43800622008d1f877abba13845"
+    "scripts/encode_indexed_binary.py": "edb3865d5107588c9ccc1dfe9aaf973eb2c3de43800622008d1f877abba13845",
+    "tests/motion-polish-stage.mjs": "bec01a5dbff14b6a4dfff87ae2fa2d4b1a66efb1d296f1351778c285f9da5e1b"
   },
   "localAdaptations": [
     "package.json",
     "config.json",
     "cordis.patch.yml",
-    "tests/dsh-host.mjs"
+    "tests/dsh-host.mjs",
+    "docs/dsh-adaptation-design.md"
   ]
 }
