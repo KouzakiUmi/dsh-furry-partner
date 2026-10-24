@@ -1,0 +1,13 @@
+{
+  "name": "呜咪",
+  "subtitle": "你的工作搭档",
+  "enabled": true,
+  "animation": true,
+  "persona": false,
+  "style": "umi",
+  "size": "normal",
+  "scale": 1,
+  "bubbleMode": "auto",
+  "companionship": "gentle",
+  "language": "auto"
+}

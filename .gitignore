@@ -1,0 +1,12 @@
+node_modules/
+work/
+dist/
+__pycache__/
+*.py[cod]
+*.log
+*.tgz
+tests/*-validation.json
+tests/*-validation/
+**/*-validation.json
+.env
+.env.*

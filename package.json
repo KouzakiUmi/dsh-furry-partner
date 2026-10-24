@@ -1,0 +1,76 @@
+{
+  "name": "dsh-furry-partner",
+  "version": "2.5.1-preview.6",
+  "description": "Umi / 呜咪 — an animated DeepSeek Harness companion with English/中文 UI.",
+  "author": "KouzakiUmi",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/KouzakiUmi/dsh-furry-partner#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KouzakiUmi/dsh-furry-partner.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KouzakiUmi/dsh-furry-partner/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-dsh-client.mjs",
+    "test": "node tests/run.mjs",
+    "pack:release": "python tools/package-dsh.py"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/*.js",
+    "lib/*.mjs",
+    "cordis.patch.yml",
+    "config.json",
+    "prompts/*.md",
+    "assets/status-*.json",
+    "assets/ui-*.json",
+    "assets/illustration/*.json",
+    "assets/reactions/umi/*.json",
+    "assets/hires/**",
+    "assets/branding/*",
+    "assets/animated/**",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "NOTICE",
+    "ASSET_LICENSE.md",
+    "SOURCE-PROVENANCE.json"
+  ],
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    },
+    "compatibility": {
+      "node": ">=18",
+      "dshReleases": {
+        "0.2.1-alpha.1": "compatible",
+        "0.2.1-alpha.2": "compatible",
+        "0.2.1-alpha.3": "compatible",
+        "0.2.1-rc.2": "compatible"
+      }
+    }
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "umi",
+    "furry",
+    "companion"
+  ]
+}
