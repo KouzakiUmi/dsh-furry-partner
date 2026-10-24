@@ -18,7 +18,7 @@
 
 ## 2. 原项目模块去留与映射矩阵
 
-原项目将**状态与动画逻辑**（`lib/*.mjs` 纯函数模块）与**终端宿主层**（[`index.ts`](../index.ts)）做了解耦，这为迁移到 DSH 提供了极佳的基础：
+原项目将**状态与动画逻辑**（`lib/*.mjs` 纯函数模块）与**终端宿主层**（[`index.ts`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/index.ts)）做了解耦，这为迁移到 DSH 提供了极佳的基础：
 
 | 原项目模块 / 资产 | 职责说明 | DSH 适配策略 | 在 DSH 中的对应落点 |
 | :--- | :--- | :--- | :--- |
@@ -29,9 +29,9 @@
 | [`lib/styles.mjs`](../lib/styles.mjs) & [`lib/language.mjs`](../lib/language.mjs) | 4 种画风归一化、中英双语自动检测与文案解析 | **直接复用** | Client & Host 共享配置工具 |
 | [`assets/status-copy*.json`](../assets/status-copy.json) & [`status-phrases*.json`](../assets/status-phrases.json) | 中英文状态标签、气泡文案、戳一戳短语池 | **直接复用** | 内联至 Client 端（体积仅 ~20KB） |
 | [`prompts/umi-persona*.md`](../prompts/umi-persona.md) | 可选的 Umi 角色语气 System Prompt 注入 | **适配迁移** | Host 端拦截 `system-prompt/assemble` 事件注入 |
-| [`site/app.js`](../site/app.js) 中的 `drawSheetFrame` | 浏览器端将调色板索引帧绘制到 `ImageData` / Offscreen `<canvas>` 并缓存位图 | **提炼升级** | Client 端 `CanvasMascotRenderer` 组件 |
-| [`lib/sixel.mjs`](../lib/sixel.mjs) / [`lib/renderer.mjs`](../lib/renderer.mjs) / [`lib/overlay-visibility.mjs`](../lib/overlay-visibility.mjs) | 终端 Sixel 编码、ANSI 半块字符渲染、TUI 弹窗遮挡裁剪 | **废弃移除** | 由 Web Canvas + DOM 层级（`z-index`）自然替代 |
-| [`lib/ui-chinese.mjs`](../lib/ui-chinese.mjs) / [`lib/command-chinese.mjs`](../lib/command-chinese.mjs) / [`lib/native-prompt.mjs`](../lib/native-prompt.mjs) | Pi TUI 界面汉化 Monkey-patch 与 Pi 内置文档精简 | **废弃移除** | DSH 已有专门的 `dsh-prompt-zh` 插件处理汉化，桌宠插件保持职责单一 |
+| [`site/app.js`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/site/app.js) 中的 `drawSheetFrame` | 浏览器端将调色板索引帧绘制到 `ImageData` / Offscreen `<canvas>` 并缓存位图 | **提炼升级** | Client 端 `CanvasMascotRenderer` 组件 |
+| [`lib/sixel.mjs`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/lib/sixel.mjs) / [`lib/renderer.mjs`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/lib/renderer.mjs) / [`lib/overlay-visibility.mjs`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/lib/overlay-visibility.mjs) | 终端 Sixel 编码、ANSI 半块字符渲染、TUI 弹窗遮挡裁剪 | **废弃移除** | 由 Web Canvas + DOM 层级（`z-index`）自然替代 |
+| [`lib/ui-chinese.mjs`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/lib/ui-chinese.mjs) / [`lib/command-chinese.mjs`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/lib/command-chinese.mjs) / [`lib/native-prompt.mjs`](https://github.com/KouzakiUmi/pi-furry-partner/blob/f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1/lib/native-prompt.mjs) | Pi TUI 界面汉化 Monkey-patch 与 Pi 内置文档精简 | **废弃移除** | DSH 已有专门的 `dsh-prompt-zh` 插件处理汉化，桌宠插件保持职责单一 |
 
 ---
 
