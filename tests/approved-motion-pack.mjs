@@ -399,7 +399,7 @@ try {
   try {
     for (const style of ['umi', 'illustration']) {
       const selection = player.sample({ phase: 'thinking' }, { style });
-      await until(() => Boolean(player.indexedFrame(selection, style)), `${style} actual Pi resource loads`);
+      await until(() => Boolean(player.indexedFrame(selection, style)), `${style} actual DSH indexed resource loads`);
       const visual = player.indexedFrame(selection, style);
       assert.equal(visual.sheet.width, catalog.clips.think.indexed[style].width);
       assert.equal(visual.motion.scale, 1); assert.equal(visual.transitioning, false);

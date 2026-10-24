@@ -37,14 +37,14 @@ const mockReact = {
 
 await import(pathToFileURL(join(root, "lib/client.js")).href);
 assert.ok(loadedModuleEntry, "window.__ModuleLoader__.load was called");
-assert.equal(loadedModuleEntry.id, "pi-furry-partner");
+assert.equal(loadedModuleEntry.id, "dsh-furry-partner");
 
 const clientPlugin = loadedModuleEntry.factory((mod) => {
   if (mod === "react") return mockReact;
   throw new Error(`Unexpected require: ${mod}`);
 });
 
-assert.equal(clientPlugin.name, "pi-furry-partner/client");
+assert.equal(clientPlugin.name, "dsh-furry-partner/client");
 assert.deepEqual(clientPlugin.inject, ["slots"]);
 assert.equal(typeof clientPlugin.apply, "function");
 
@@ -64,10 +64,10 @@ let hostConfig = {
 
 const mockFetch = async (url, init = {}) => {
   const urlStr = String(url);
-  if (urlStr.startsWith("/api/furry-partner/sheet")) {
+  if (urlStr.startsWith("/api/dsh-furry-partner/sheet")) {
     return new Response(JSON.stringify(loadEncodedSheet("umi-pixel")), { status: 200 });
   }
-  if (urlStr.startsWith("/api/furry-partner/config")) {
+  if (urlStr.startsWith("/api/dsh-furry-partner/config")) {
     if (init.method === "POST") {
       const body = JSON.parse(init.body);
       hostConfig = { ...hostConfig, ...body };
@@ -160,7 +160,7 @@ assert.ok(registeredSlots.has("shell.overlay:furry-partner-overlay"), "shell.ove
 assert.equal([...registeredSlots.keys()].some(key=>key.startsWith('conversation.input.')),false,'No composer controls or placeholder slots remain');
 assert.equal(components.ComposerMascotPill,undefined,'Retired composer component is absent');
 assert.ok(registeredSlots.has("settings.section:furry-partner"), "settings.section registered");
-assert.ok(registeredSlots.has("plugins.bundle.config:pi-furry-partner"), "plugins.bundle.config registered");
+assert.ok(registeredSlots.has("plugins.bundle.config:dsh-furry-partner"), "plugins.bundle.config registered");
 assert.ok(registeredSlots.has("conversation.hero.brand.mark:single"), "conversation.hero.brand.mark registered");
 assert.ok(registeredCommand, "/mascot commandUi registered");
 assert.equal(registeredCommand.name, "mascot");

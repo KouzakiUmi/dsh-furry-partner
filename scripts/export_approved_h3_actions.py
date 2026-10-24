@@ -1,4 +1,4 @@
-"""Stage reviewed whole-frame H3 packs for Pi and DSH; explicit --apply only.
+"""Stage reviewed whole-frame H3 packs for DSH; explicit --apply only.
 
 All generation, matte processing and visual review precede this exporter.
 The --apply gate requires a recorded human decision, never a fabricated flag.
@@ -24,7 +24,7 @@ def indexed(image,palette,size,pixel=False):
     if pixel:
         opaque[a<128]=0
     else:
-        # Pi has no fractional alpha. Its terminal derivative is explicitly
+        # Indexed transport has no fractional alpha. Its terminal derivative is explicitly
         # composited against black before palette lookup, separate from HD.
         flat_rgb=np.uint8(np.rint(rgb.astype(float)*a[:,:,None]/255))
         full=Image.new('P',(1,1));full_colors=palette+[palette[-1]]*(256-len(palette));full.putpalette([n for c in full_colors for n in c])
@@ -49,7 +49,7 @@ def main():
     for r in records:assert sha(processed/'rgba'/r['file'])==r['sha256']
     # Sample on the final output clock, including both boundary poses. Timed
     # slots are distributed over the full cycle, so the last endpoint never
-    # creates an invalid lone 41/42ms step in the >=50ms Pi player.
+    # creates an invalid lone 41/42ms step in the >=50ms indexed player.
     terminal_count=max(2,round(period*12/1000))
     boundaries=[round(n*period/terminal_count) for n in range(terminal_count+1)]
     sample=[min(range(len(records)),key=lambda i:abs(records[i]['atMs']-boundaries[n])) for n in range(terminal_count)]

@@ -10,7 +10,7 @@ try {
  const components=plugin.createMascotComponents(React,{getSnapshot:forbidden,subscribe:forbidden,poke:forbidden,getRenderLayer:forbidden});
  const node=components.HeroMascotMark({size:112});
  const picture=node.children[0],img=picture.children.find(n=>n.type==='img'),source=picture.children.find(n=>n.type==='source');
- assert.equal(img.props.src,'/api/furry-partner/branding/title');assert.equal(img.props.width,112);assert.equal(img.props.height,112);
+ assert.equal(img.props.src,'/api/dsh-furry-partner/branding/title');assert.equal(img.props.width,112);assert.equal(img.props.height,112);
  assert.equal(img.props.style.objectFit,'contain');assert.equal(img.props.draggable,false);
  assert.equal(img.props.onClick,undefined);assert.equal(node.props.onClick,undefined);
  assert.equal(source.props.media,'(prefers-reduced-motion: reduce)');assert.match(source.props.srcSet,/variant=static/);

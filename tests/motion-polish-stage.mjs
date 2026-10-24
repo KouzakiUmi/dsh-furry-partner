@@ -116,7 +116,7 @@ for (const id of expectedIds) {
   for (const style of ['umi', 'illustration']) assert.ok(motion.decodeApprovedMotionIndexed(raw, normalized, normalized.clips[id], style), `${id}/${style}: real indexed QA/schema accepts`);
   assert.equal(motion.decodeApprovedMotionIndexed({ ...raw, revision: 'stale' }, catalog, clip, 'umi'), null);
   assert.equal(motion.decodeApprovedMotionIndexed({ ...raw, qa: { ...raw.qa, sourceVideoSha256: '0'.repeat(64) } }, catalog, clip, 'umi'), null);
-  timeline(clip.hires.frames, clip.periodMs, `${id}/HD`); timeline(raw.frames, clip.periodMs, `${id}/Pi`);
+  timeline(clip.hires.frames, clip.periodMs, `${id}/HD`); timeline(raw.frames, clip.periodMs, `${id}/indexed`);
   for (const frame of clip.hires.frames) {
     const file = inside(animated, clip.hires.baseUrl + frame.file);
     assert.equal(hash(file), frame.webpSha256 ?? frame.sourceAsset?.webpSha256, `${id}/${frame.id}: HD bytes bound`);
@@ -189,8 +189,8 @@ assert.equal(hash(inside(baseline, overlay.file)), overlay.sha256, 'Exact statio
 const wait = rawByFile.get(catalog.clips.wait.indexed.umi.file);
 for (const frame of wait.frames) for (const [x, y, rgb] of hdProof.questionSamples) {
   const index = frame.pixels[y * wait.width + x];
-  assert.notEqual(index, wait.transparentIndex, `Pi/${frame.id}: stationary question cannot vanish`);
-  assert.ok(Math.hypot(...wait.palette[index].map((v, i) => v - rgb[i])) < 90, `Pi/${frame.id}: fixed question location/color retained after palette quantization`);
+  assert.notEqual(index, wait.transparentIndex, `indexed/${frame.id}: stationary question cannot vanish`);
+  assert.ok(Math.hypot(...wait.palette[index].map((v, i) => v - rgb[i])) < 90, `indexed/${frame.id}: fixed question location/color retained after palette quantization`);
 }
 
 // Exercise real state/gesture selection and both style aliases, including chain.
