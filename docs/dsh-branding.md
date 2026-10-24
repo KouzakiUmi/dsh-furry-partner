@@ -1,3 +1,5 @@
+> 当前适用范围：DSH 独立仓库；运行时身份和升级以[迁移说明](runtime-identity.md)为准。此文的历史尺寸／验证记录不代表已重新安装或发布。
+
 # DSH title image and floating pet
 
 DSH's blank-session brand mark uses its own routed image at the existing title
@@ -24,7 +26,7 @@ An independently reviewed waving loop may be supplied as
 }
 ```
 
-The host route `/api/furry-partner/branding/title` serves that animation only
+The host route `/api/dsh-furry-partner/branding/title` serves that animation only
 when the fixed filename allowlist, explicit acceptance, SHA-256 and multi-frame
 format checks all pass. Otherwise it serves the original PNG. The
 `?variant=static` form always serves the PNG; unsupported variants return 404.

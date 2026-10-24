@@ -1,6 +1,6 @@
 """Verify current approved color derivatives without work inputs.
 Every current HD RGBA is checked against its independently frozen reviewed candidate
-hash and directly compared with source29 alpha/alpha0RGB. Pi payloads/palette/clock
+hash and directly compared with source29 alpha/alpha0RGB. Indexed payloads/palette/clock
 are checked against approved color candidates and the immutable original metadata.
 --reproduce additionally recalculates every HD transform from frozen source29.
 """
@@ -29,7 +29,7 @@ def run(reproduce=False):
  assert c['revision']==proof['revision'] and c['revision']!=old['revision'];assert len(c['clips'])==29
  for k,v in old.items():
   if k not in ['clips','revision','indexedBinaryProvenance']:assert c[k]==v,('topMetadata',k)
- v1=mod(P/'frozen-v1.py','verify_color_frozen_v1');a02=mod(P/'frozen-a02.py','verify_color_frozen_a02');palette=read(P/'common-palette.json')['palette'];assert bh(canonical(palette))==proof['commonPaletteSha256'];pi=0;tasks=[]
+ v1=mod(P/'frozen-v1.py','verify_color_frozen_v1');a02=mod(P/'frozen-a02.py','verify_color_frozen_a02');palette=read(P/'common-palette.json')['palette'];assert bh(canonical(palette))==proof['commonPaletteSha256'];indexed=0;tasks=[]
  for cid,clip in c['clips'].items():
   prev=old['clips'][cid];rec=proof['clips'][cid];assert ap['clipChoices'][cid]==rec['variant'];assert clip['qa']==prev['qa'];assert clip['paintRect']==prev['paintRect']
   for k,v in prev.items():
@@ -48,7 +48,7 @@ def run(reproduce=False):
    assert entry['sha256']==rec['indexed']['sha256'] and entry['sourceJsonSha256']==rec['indexed']['sourceJsonSha256'];oe=prev['indexed'][style]
    for k,v in oe.items():
     if k not in ['sha256','sourceJsonSha256']:assert entry[k]==v
-  pi+=len(raw['frames'])
+  indexed+=len(raw['frames'])
  def one(t):
   cid,rect,f,of,rr=t;current=A/'hires'/cid/f['file'];original=S/'hires'/cid/f['file'];assert sha(current)==f['webpSha256']==rr['approvedWebpSha256'];assert sha(original)==rr['originalWebpSha256']
   a=np.array(Image.open(original).convert('RGBA'));b=np.array(Image.open(current).convert('RGBA'));assert a.shape==b.shape==(rect['height'],rect['width'],4);assert bh(b.tobytes())==f['decodedRgbaSha256']==rr['approvedDecodedRgbaSha256'];assert bh(a.tobytes())==rr['originalDecodedRgbaSha256'];assert np.array_equal(a[:,:,3],b[:,:,3]);assert np.array_equal(a[a[:,:,3]==0],b[a[:,:,3]==0]);assert bh(a[:,:,3].tobytes())==rr['alphaSha256'];assert bh(a[a[:,:,3]==0,:3].tobytes())==rr['alpha0RgbSha256'];assert f['sourceAsset']=={'path':current.relative_to(R).as_posix(),'webpSha256':sha(current),'decodedRgbaSha256':bh(b.tobytes())}
@@ -58,7 +58,7 @@ def run(reproduce=False):
    assert np.array_equal(expected,b),(cid,f['file'],'fixed transform reproduction')
   return True
  with ThreadPoolExecutor(max_workers=4)as pool:assert all(pool.map(one,tasks))
- assert len(tasks)==proof['hdFrameCount']==3048 and pi==proof['piFrameCount']
- result={'passed':True,'clipCount':29,'HDWholeRGBAFrames':len(tasks),'HDAlphaAndAlpha0RGBExact':True,'PiExactReviewedCandidateFrames':pi,'PiOriginalNoncolorMetadataExact':True,'sameReviewedCommonPalette':True,'allOriginalQAMetadataRetained':True,'workInputsRequired':False,'allFixedTransformsReproduced':reproduce,'catalogRevision':c['revision'],'catalogSha256':sha(A/'catalog.json')};print(json.dumps(result),flush=True);return result
+ assert len(tasks)==proof['hdFrameCount']==3048 and indexed==proof['piFrameCount']
+ result={'passed':True,'clipCount':29,'HDWholeRGBAFrames':len(tasks),'HDAlphaAndAlpha0RGBExact':True,'PiExactReviewedCandidateFrames':indexed,'PiOriginalNoncolorMetadataExact':True,'sameReviewedCommonPalette':True,'allOriginalQAMetadataRetained':True,'workInputsRequired':False,'allFixedTransformsReproduced':reproduce,'catalogRevision':c['revision'],'catalogSha256':sha(A/'catalog.json')};print(json.dumps(result),flush=True);return result
 if __name__=='__main__':
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--reproduce',action='store_true');args=ap.parse_args();run(args.reproduce)

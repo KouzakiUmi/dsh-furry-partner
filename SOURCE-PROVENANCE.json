@@ -3,11 +3,13 @@
   "sourceRepository": "https://github.com/KouzakiUmi/pi-furry-partner",
   "sourceCommit": "f3fd0a9edbd0327fedda0f0fdeca3c9e6b5d81b1",
   "runtimeCompatibility": {
-    "hostPluginId": "pi-furry-partner",
-    "clientModuleId": "pi-furry-partner",
+    "hostPluginId": "dsh-furry-partner",
+    "clientModuleId": "dsh-furry-partner",
+    "cordisSlotId": "dsh-furry-partner",
+    "loaderPackageName": "dsh-furry-partner",
+    "apiPrefix": "/api/dsh-furry-partner",
     "settingsStorageKey": "dsh-furry-partner:settings:v2",
-    "reason": "Preserve installed DSH identities and settings; package and repository are independently named dsh-furry-partner.",
-    "loaderPackageName": "dsh-furry-partner"
+    "reason": "Canonical DSH identities authorized by the user on 2026-10-25; existing DSH browser preferences remain unchanged. Historical source names are provenance only."
   },
   "copiedFileSha256": {
     "lib/dsh-scene-title.mjs": "855541b9686ba06c25572eb26781bfb2c7e2f76654716cc2cf35c08132464c87",
@@ -8045,10 +8047,62 @@
     "tests/motion-polish-stage.mjs": "bec01a5dbff14b6a4dfff87ae2fa2d4b1a66efb1d296f1351778c285f9da5e1b"
   },
   "localAdaptations": [
-    "package.json",
     "config.json",
     "cordis.patch.yml",
+    "docs/dsh-adaptation-design.md",
+    "docs/dsh-branding.md",
+    "docs/dsh-companion-interactions.md",
+    "docs/dsh-display-calibration.md",
+    "lib/approved-motion-codec.mjs",
+    "lib/approved-motion.mjs",
+    "lib/dsh-bridge.mjs",
+    "lib/dsh-client-source.js",
+    "lib/expressions.mjs",
+    "lib/gestures.mjs",
+    "lib/index.js",
+    "lib/language.mjs",
+    "lib/motion.mjs",
+    "package.json",
+    "prompts/umi-persona.en.md",
+    "prompts/umi-persona.md",
+    "scripts/build-dsh-client.mjs",
+    "scripts/export_approved_h3_actions.py",
+    "tests/approved-motion-pack.mjs",
+    "tests/dsh-client.mjs",
     "tests/dsh-host.mjs",
-    "docs/dsh-adaptation-design.md"
-  ]
+    "tests/dsh-title-ui.mjs",
+    "tests/motion-polish-stage.mjs",
+    "tools/verify-approved-color-consistency.py"
+  ],
+  "relocatedFiles": {
+    "prompts/pi-system-en.md": "docs/history/source-prompts/original-system-en.md",
+    "prompts/pi-system-zh.md": "docs/history/source-prompts/original-system-zh.md"
+  },
+  "adaptedFileSha256": {
+    "lib/language.mjs": "0b389ef54d079ad759b63b5263005c3e3d75706c029eb8b96793841f04f5f7c8",
+    "lib/gestures.mjs": "e16d4521901dde06ec6bef4a0011ce19270f996057bf9ccaf9f82712a60075fe",
+    "lib/expressions.mjs": "43678060c1875ac52a5237b1edc8c63467ad83ea4194546816a0dad6c3a00fec",
+    "lib/dsh-bridge.mjs": "380a7ec1816f31b7e150c32f32eb33e6e789ab169fdcd848d37e5a539ea55f60",
+    "lib/motion.mjs": "869d89e961b454e71ba7cfd7b7c589bdb2c1f334a26ab053afea05163347b1a9",
+    "lib/approved-motion.mjs": "5416cc6f1781858a8522064dc21b91f8820eea07e136ee0df391bfd07b274371",
+    "lib/approved-motion-codec.mjs": "15f16f30ce62939516b5c61ff0a13a195738ae467600f79468cbde4715d73e21",
+    "lib/dsh-client-source.js": "3d524bf76810c52ff25e0209811350b7a99f6c0bfc27c9179dff9ba632b0de0b",
+    "lib/index.js": "f6e0a51b47032bc2e4e189b229b3afd745935bd1fdbdcca5b61eaa385f627a14",
+    "tests/dsh-title-ui.mjs": "97ee5b08e7b1b147ceebfda2083823c33e9730d82f4bedf69f58098012046366",
+    "tests/dsh-client.mjs": "03b8288fe1a90b7af227021a008cd52e79762f916ccc8f30f7649e6631a903a3",
+    "tests/dsh-host.mjs": "124a7e0f7b8d6aec757e407a780e607525a8ae164403e91766b20a1ed3844838",
+    "prompts/umi-persona.en.md": "4f6d92148d0e967eacb93af0e19091331887c32dc58544013d9686f13afd18f0",
+    "prompts/umi-persona.md": "1d30100eca80f84974fa6c1d5b27e8195e43ae73ba49e2763add32b08c5d19f4",
+    "scripts/build-dsh-client.mjs": "b5cd245bdfc4fdf3dc645270bf2682e5a6a68d066989162842991d4faf947d8b",
+    "scripts/export_approved_h3_actions.py": "2c748bcb963c175ac7b9ef3ef90b1d696029fee1332c668ae66811eaa388327c",
+    "tools/verify-approved-color-consistency.py": "570ff9c5efe92b236732c0df087118dfd5caa5b4efd5a810cbd1e3a5936d3aaa",
+    "cordis.patch.yml": "177edfea5d0c16d738c87a0443118a367e60f16cafcdb38e06ef419a8d3a6ed0",
+    "docs/dsh-adaptation-design.md": "bb09d05a908253ff314e01121c0e51592e6c48dc0b0d2497a46671df29959098",
+    "docs/dsh-branding.md": "8b0a76b88ba21ad737556f5b2e098ef919c7009d5ffcc30c4bcefe9fa3119925",
+    "docs/dsh-companion-interactions.md": "eb1bcbd01c17e6a7a44f3f059124da13922da8f298104e33acbf66be68157449",
+    "docs/dsh-display-calibration.md": "6e54fc919d8619a5d0282bb3d1eaf87649bdd22c0ab43e6fe3d5d030e7d48f5f",
+    "tests/approved-motion-pack.mjs": "fca6bb310ab7c9fa0ab5dd2157b22ccfa2a6eea032de3d6daae96aa9fa70a73b",
+    "tests/motion-polish-stage.mjs": "8bb503e434e60002bf42924e464379363aa8f2287c36df161a71cab57d84c342"
+  },
+  "adaptationPolicy": "Original hashes remain unchanged. Authorized DSH-only runtime changes bind separate current hashes; relocated unused system prompts retain their original bytes as source history. Approved assets are never exempted."
 }

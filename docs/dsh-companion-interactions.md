@@ -1,3 +1,5 @@
+> 当前适用范围：DSH 独立仓库；运行时身份和升级以[迁移说明](runtime-identity.md)为准。此文的历史尺寸／验证记录不代表已重新安装或发布。
+
 # DSH 呜咪主动陪伴 / Desktop companion
 
 This local companion layer never sends messages, invokes models, moves the pointer, or changes an agent's task state.

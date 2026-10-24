@@ -24,7 +24,7 @@ const work = resolve(root, "work");
 // 1. Validate package.json and cordis.patch.yml DSH contracts
 const pkg = JSON.parse(await readFile(join(root, "package.json"), "utf8"));
 const patchYml = await readFile(join(root, "cordis.patch.yml"), "utf8");
-assert.equal(name, "pi-furry-partner");
+assert.equal(name, "dsh-furry-partner");
 assert.deepEqual(inject, ["systemPrompt"]);
 assert.equal(pkg.main, "./lib/index.js");
 assert.equal(pkg.exports["."], "./lib/index.js");
@@ -62,7 +62,7 @@ const enPersona = formatDshPersonaPrompt("en");
 assert.match(enPersona, /inside DeepSeek Harness \(DSH\)/);
 assert.doesNotMatch(enPersona, /inside Pi\b/);
 
-// 4. Validate Host routes (/api/furry-partner/sheet, /api/furry-partner/config, /api/furry-partner/hires/*) and system-prompt/assemble
+// 4. Validate Host routes (/api/dsh-furry-partner/sheet, /api/dsh-furry-partner/config, /api/dsh-furry-partner/hires/*) and system-prompt/assemble
 await mkdir(work, { recursive: true });
 const scratch = await mkdtemp(join(work, "dsh-host-"));
 try {
@@ -108,6 +108,7 @@ try {
   apply(mockCtx, { configPath: tempConfigPath });
   assert.deepEqual(settingsConfigured, { auto: false });
   assert.ok(routes.has(SHEET_PATH), "Sheet route registered");
+  for (const path of routes.keys()) assert.ok(path.startsWith('/api/dsh-furry-partner/'), `Non-DSH route: ${path}`);
   assert.ok(routes.has(GESTURE_PATH), 'Single reviewed clip route registered');
   assert.ok(routes.has(TITLE_IMAGE_PATH),'Independent title image route registered');
   const titleRes=await routes.get(TITLE_IMAGE_PATH).fetch(new Request(`http://localhost${TITLE_IMAGE_PATH}?variant=static`));
@@ -128,7 +129,7 @@ try {
   assert.ok(routes.has(CONFIG_PATH), "Config route registered");
   assert.ok(hooks.has("system-prompt/assemble"), "system-prompt/assemble hook registered");
 
-  // GET /api/furry-partner/hires/manifest
+  // GET /api/dsh-furry-partner/hires/manifest
   const hiResManifestRes = await routes.get(HIRES_MANIFEST_PATH).fetch(new Request(`http://localhost${HIRES_MANIFEST_PATH}`));
   assert.equal(hiResManifestRes.status, 200);
   const hiResManifest = await hiResManifestRes.json();
@@ -141,7 +142,7 @@ try {
   assert.equal(hiResManifest.animations.watch.clips.running.fps, 24);
   assert.equal(hiResManifest.animations.search.clips.searching.fps, 24);
 
-  // GET /api/furry-partner/hires/frame?kind=poses&id=idle-open
+  // GET /api/dsh-furry-partner/hires/frame?kind=poses&id=idle-open
   const hiResFrameRes = await routes.get(HIRES_FRAME_PATH).fetch(
     new Request(`http://localhost${HIRES_FRAME_PATH}?kind=poses&id=idle-open`)
   );
@@ -150,7 +151,7 @@ try {
   const webpBytes = new Uint8Array(await hiResFrameRes.arrayBuffer());
   assert.ok(webpBytes.length > 1000, "Returns valid 640x640 WebP payload");
 
-  // GET /api/furry-partner/sheet?style=umi-pixel
+  // GET /api/dsh-furry-partner/sheet?style=umi-pixel
   const sheetRes = await routes.get(SHEET_PATH).fetch(new Request(`http://localhost${SHEET_PATH}?style=umi-pixel`));
   assert.equal(sheetRes.status, 200);
   const fetchedSheet = await sheetRes.json();
@@ -168,7 +169,7 @@ try {
   const untouched = await assembleHook(null, null, async () => baseAssembled);
   assert.equal(untouched.sections.length, 2);
 
-  // POST /api/furry-partner/config to enable persona and switch language
+  // POST /api/dsh-furry-partner/config to enable persona and switch language
   const postRes = await routes.get(CONFIG_PATH).fetch(
     new Request(`http://localhost${CONFIG_PATH}`, {
       method: "POST",
@@ -182,7 +183,7 @@ try {
   assert.equal(updatedConfig.style, "umi");
   assert.equal(updatedConfig.size, "large");
 
-  // Verify Pi-specific keys in config.json were preserved!
+  // Verify unrelated existing config fields were preserved.
   const savedDisk = JSON.parse(await readFile(tempConfigPath, "utf8"));
   assert.equal(savedDisk.layout, "editor");
   assert.equal(savedDisk.renderer, "sixel");
@@ -192,7 +193,7 @@ try {
   // Now system-prompt/assemble injects furry-partner:persona right before deployment:persona-suffix
   const withPersona = await assembleHook(null, null, async () => baseAssembled);
   assert.equal(withPersona.sections.length, 3);
-  assert.equal(withPersona.sections[1].name, "furry-partner:persona");
+  assert.equal(withPersona.sections[1].name, "dsh-furry-partner:persona");
   assert.match(withPersona.sections[1].text, /DeepSeek Harness \(DSH\) 里的陪伴型编程伙伴/);
   assert.equal(withPersona.sections[2].name, "deployment:persona-suffix");
 } finally {
