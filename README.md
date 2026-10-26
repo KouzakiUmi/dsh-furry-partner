@@ -2,11 +2,11 @@
 
 [English](README.en.md) · [文档入口](docs/README.md) · [身份与升级迁移](docs/runtime-identity.md)
 
-DeepSeek Harness（DSH）专用的呜咪全动态桌宠，提供中文／English、29 个完整动作、真实工具状态跟随、主动陪伴和可选角色口吻。当前源码版本 **2.5.1-preview.7**；该版本尚未创建 Release。
+DeepSeek Harness（DSH）专用的呜咪全动态桌宠，提供中文／English 界面、29 个已批准动画片段（含待机与进出过渡变体）、真实工具与会话状态跟随、主动陪伴和可选角色口吻。当前源码版本 **2.5.1-preview.7**；尚未创建 Release，也未发布到 npm。
 
 ## 安装与升级
 
-目前先从本仓库构建专用包：
+### 从本仓库构建包
 
 ```powershell
 python -m pip install -r tools/requirements-validation.txt
@@ -15,13 +15,23 @@ npm test
 npm run pack:release
 ```
 
-保存工作并退出旧插件后，在生成的 `dist/` 附件目录安装（DSH 命令的具体可用项以已安装版本为准）：
+保存工作并退出旧插件后，安装生成的 tgz：
 
 ```powershell
-dsh plugin --profile desktop add "./dsh-furry-partner-2.5.1-preview.7.tgz"
+dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.7.tgz"
 ```
 
-重新启动 DSH。默认仅提供插画全动态外观，旧像素设置归一化为插画。构建、测试和打包不会代你修改本机 DSH 配置或安装插件。
+桌面应用的 `desktop` profile 由应用自身独占管理（CLI 会拒绝该 profile），请在应用的插件页面安装本地包，不要使用上面的命令。
+
+### 直接从 Git 安装
+
+仓库已提交构建产物 `lib/client.js`，因此不必先构建；但仓库包含已批准的源素材，完整克隆约 1.8 GB：
+
+```powershell
+dsh plugin --profile <profile> add "github:KouzakiUmi/dsh-furry-partner"
+```
+
+安装后重新启动 DSH。默认仅提供插画全动态外观，旧像素设置归一化为插画。构建、测试和打包不会代你修改本机 DSH 配置或安装插件。
 
 ## 统一运行时命名
 

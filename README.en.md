@@ -2,9 +2,11 @@
 
 [简体中文](README.md) · [Documentation](docs/README.md) · [Identity and upgrade migration](docs/runtime-identity.md)
 
-An animated Umi companion for DeepSeek Harness (DSH), with Chinese/English UI, 29 complete clips, real tool/session following, local companionship and an optional character voice. Current source is **2.5.1-preview.7**, not yet published as a Release.
+An animated Umi companion for DeepSeek Harness (DSH), with Chinese/English UI, 29 approved motion clips (including idle and enter/exit variants), real tool/session following, local companionship and an optional character voice. Current source is **2.5.1-preview.7**; no Release and no npm publication yet.
 
 ## Build and install
+
+### Build the package from this repository
 
 ```sh
 python -m pip install -r tools/requirements-validation.txt
@@ -13,10 +15,20 @@ npm test
 npm run pack:release
 ```
 
-Save work and disable the old plugin before installing the generated package from dist. Check the installed DSH version's command help for available options:
+Save work and disable the old plugin before installing the generated tgz:
 
 ```sh
-dsh plugin --profile desktop add "./dsh-furry-partner-2.5.1-preview.7.tgz"
+dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.7.tgz"
+```
+
+The desktop app owns its `desktop` profile (the CLI refuses that profile), so install the local package through the app's plugin page instead of the command above.
+
+### Install directly from Git
+
+The repository ships the built `lib/client.js`, so no build step is required first; the full clone is about 1.8 GB because the approved source artwork is committed:
+
+```sh
+dsh plugin --profile <profile> add "github:KouzakiUmi/dsh-furry-partner"
 ```
 
 Restart DSH after installation. Only the illustrated full-animation style is exposed; historical pixel preferences migrate to illustration. Build and test commands do not install the plugin or modify a live DSH configuration.
