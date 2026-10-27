@@ -2,16 +2,16 @@
 
 [English](README.en.md) · [文档入口](docs/README.md) · [身份与升级迁移](docs/runtime-identity.md)
 
-DeepSeek Harness（DSH）专用的呜咪全动态桌宠，提供中文／English 界面、29 个已批准动画片段（含待机与进出过渡变体）、真实工具与会话状态跟随、主动陪伴和可选角色口吻。当前版本 **2.5.1-preview.7**，以预发布 Release 提供，尚未发布到 npm。
+DeepSeek Harness（DSH）专用的呜咪全动态桌宠，提供中文／English 界面、29 个已批准动画片段（含待机与进出过渡变体）、真实工具与会话状态跟随、主动陪伴和可选角色口吻。当前版本 **2.5.1-preview.8**，以预发布 Release 提供，尚未发布到 npm。
 
 ## 安装与升级
 
 ### 下载预构建包
 
-从 [Releases](https://github.com/KouzakiUmi/dsh-furry-partner/releases) 下载 `dsh-furry-partner-2.5.1-preview.7.tgz`，并用同目录的 `.tgz.sha256` 校验，然后安装：
+从 [Releases](https://github.com/KouzakiUmi/dsh-furry-partner/releases) 下载 `dsh-furry-partner-2.5.1-preview.8.tgz`，并用同目录的 `.tgz.sha256` 校验，然后安装：
 
 ```powershell
-dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.7.tgz"
+dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.8.tgz"
 ```
 
 桌面应用的 `desktop` profile 由应用自身独占管理（CLI 会拒绝该 profile），请在应用的插件页面安装本地包，不要使用上面的命令。

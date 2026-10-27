@@ -2,16 +2,16 @@
 
 [简体中文](README.md) · [Documentation](docs/README.md) · [Identity and upgrade migration](docs/runtime-identity.md)
 
-An animated Umi companion for DeepSeek Harness (DSH), with Chinese/English UI, 29 approved motion clips (including idle and enter/exit variants), real tool/session following, local companionship and an optional character voice. Current version **2.5.1-preview.7**, available as a pre-release, not yet published to npm.
+An animated Umi companion for DeepSeek Harness (DSH), with Chinese/English UI, 29 approved motion clips (including idle and enter/exit variants), real tool/session following, local companionship and an optional character voice. Current version **2.5.1-preview.8**, available as a pre-release, not yet published to npm.
 
 ## Build and install
 
 ### Download the prebuilt package
 
-Download `dsh-furry-partner-2.5.1-preview.7.tgz` from [Releases](https://github.com/KouzakiUmi/dsh-furry-partner/releases), check it against the matching `.tgz.sha256`, then install:
+Download `dsh-furry-partner-2.5.1-preview.8.tgz` from [Releases](https://github.com/KouzakiUmi/dsh-furry-partner/releases), check it against the matching `.tgz.sha256`, then install:
 
 ```sh
-dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.7.tgz"
+dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.8.tgz"
 ```
 
 The desktop app owns its `desktop` profile (the CLI refuses that profile), so install the local package through the app's plugin page instead of the command above.
