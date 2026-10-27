@@ -11147,7 +11147,7 @@
     "prompts/umi-persona.md": "1d30100eca80f84974fa6c1d5b27e8195e43ae73ba49e2763add32b08c5d19f4",
     "scripts/build-dsh-client.mjs": "b5cd245bdfc4fdf3dc645270bf2682e5a6a68d066989162842991d4faf947d8b",
     "scripts/export_approved_h3_actions.py": "2c748bcb963c175ac7b9ef3ef90b1d696029fee1332c668ae66811eaa388327c",
-    "tools/verify-approved-color-consistency.py": "57ffb0e65736539b204666bcb4e606011955f705f5095cc722f9b64361d04126",
+    "tools/verify-approved-color-consistency.py": "bbc0cf57dd190bc81e1768a3aae94383142ea9d3eb72c05fe7722213872016b7",
     "cordis.patch.yml": "177edfea5d0c16d738c87a0443118a367e60f16cafcdb38e06ef419a8d3a6ed0",
     "docs/dsh-adaptation-design.md": "bb09d05a908253ff314e01121c0e51592e6c48dc0b0d2497a46671df29959098",
     "docs/dsh-branding.md": "8b0a76b88ba21ad737556f5b2e098ef919c7009d5ffcc30c4bcefe9fa3119925",
