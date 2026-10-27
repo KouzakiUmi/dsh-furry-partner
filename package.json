@@ -46,7 +46,9 @@
     "LICENSE",
     "NOTICE",
     "ASSET_LICENSE.md",
-    "SOURCE-PROVENANCE.json"
+    "SOURCE-PROVENANCE.json",
+    "!assets/animated/provenance/**",
+    "!assets/branding/umi-title-wave.webp"
   ],
   "dsh": {
     "manifestVersion": 1,
