@@ -8,6 +8,7 @@
 ## Release package contents
 
 - `package.json` `files` lists what ships. Runtime code reads only `assets/animated` (catalog, hires frames, indexed), `assets/hires/umi` (fallback poses, watch, search, gestures), `assets/reactions/umi` (sheet indices), `assets/branding/title.json` + `umi-title.png`, `assets/illustration`, and `prompts`.
+- Asset layering: `assets/animated/{hires,indexed}` holds the approved color derivatives the runtime serves; `Hi-Res/` (flat: `catalog.json`, `source-index.json`, `hires/`, `indexed/`) is the immutable pre-color frozen baseline used only by historical approval tests and `tools/verify-approved-color-consistency.py`. Nothing under `Hi-Res/` ships or is read at runtime.
 - Excluded from the package but kept in the repository: `assets/animated/provenance/**` (approval evidence chain; tests read it from the working tree, runtime never does) and `assets/branding/umi-title-wave.webp` (dormant: `title.json` marks `qa.accepted: false`, so `loadTitleBranding` never serves it).
 - Adding a new runtime asset means adding a positive `files` pattern; verify with `npm pack --dry-run --json` that entry count and total bytes match expectations, then unpack the built tgz and confirm the runtime loaders still resolve their files.
 - Approved artwork is kept byte-exact. Reducing frame size by re-encoding would change approved pixels and hashes, so it needs explicit authorization plus updated approval records; it is not a packaging-only decision.

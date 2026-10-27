@@ -43,7 +43,7 @@ const result=spawnSync('python',['-c',String.raw`
 import sys,json,importlib.util,hashlib,numpy as np
 from pathlib import Path
 from PIL import Image
-r=Path(sys.argv[1]);a=r/'assets/animated';historical=r/'Hi-Res/production/color-consistency-20261024/source29'
+r=Path(sys.argv[1]);a=r/'assets/animated';historical=r/'Hi-Res'
 def mod(p,n):
  s=importlib.util.spec_from_file_location(n,p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
 s=mod(r/'tools/stage-motion-polish.py','verify_nuzzle_stage');q=mod(r/'scripts/export_approved_h3_actions.py','verify_nuzzle_quantizer')

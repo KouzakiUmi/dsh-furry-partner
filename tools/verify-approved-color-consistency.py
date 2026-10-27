@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 import argparse,copy,hashlib,importlib.util,json
 import numpy as np
 from PIL import Image
-R=Path(__file__).resolve().parent.parent;A=R/'assets/animated';S=R/'Hi-Res/production/color-consistency-20261024/source29'
+R=Path(__file__).resolve().parent.parent;A=R/'assets/animated';S=R/'Hi-Res'
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def bh(v):return hashlib.sha256(v).hexdigest()
 def canonical(v):return json.dumps(v,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()

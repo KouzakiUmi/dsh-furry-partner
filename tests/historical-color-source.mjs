@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {resolve,relative,sep} from 'node:path';
 import {createHash} from 'node:crypto';
-export const HISTORICAL_COLOR_SOURCE='Hi-Res/production/color-consistency-20261024/source29';
+export const HISTORICAL_COLOR_SOURCE='Hi-Res';
 export function readHistoricalColorSource(root,path){
  const base=resolve(root,'assets/animated'),rel=relative(base,resolve(path)).split(sep).join('/');
  const frozen=rel==='catalog.json'||rel.startsWith('hires/')||rel.startsWith('indexed/');
