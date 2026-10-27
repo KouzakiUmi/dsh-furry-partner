@@ -2,9 +2,19 @@
 
 [简体中文](README.md) · [Documentation](docs/README.md) · [Identity and upgrade migration](docs/runtime-identity.md)
 
-An animated Umi companion for DeepSeek Harness (DSH), with Chinese/English UI, 29 approved motion clips (including idle and enter/exit variants), real tool/session following, local companionship and an optional character voice. Current source is **2.5.1-preview.7**; no Release and no npm publication yet.
+An animated Umi companion for DeepSeek Harness (DSH), with Chinese/English UI, 29 approved motion clips (including idle and enter/exit variants), real tool/session following, local companionship and an optional character voice. Current version **2.5.1-preview.7**, available as a pre-release, not yet published to npm.
 
 ## Build and install
+
+### Download the prebuilt package
+
+Download `dsh-furry-partner-2.5.1-preview.7.tgz` from [Releases](https://github.com/KouzakiUmi/dsh-furry-partner/releases), check it against the matching `.tgz.sha256`, then install:
+
+```sh
+dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.7.tgz"
+```
+
+The desktop app owns its `desktop` profile (the CLI refuses that profile), so install the local package through the app's plugin page instead of the command above.
 
 ### Build the package from this repository
 
@@ -15,13 +25,7 @@ npm test
 npm run pack:release
 ```
 
-Save work and disable the old plugin before installing the generated tgz:
-
-```sh
-dsh plugin --profile <profile> add "./dsh-furry-partner-2.5.1-preview.7.tgz"
-```
-
-The desktop app owns its `desktop` profile (the CLI refuses that profile), so install the local package through the app's plugin page instead of the command above.
+Artifacts land in `dist/`: the tgz, its SHA-256, and a per-entry read-back report.
 
 ### Install directly from Git
 
