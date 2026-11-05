@@ -1,5 +1,11 @@
 # DSH 更新记录
 
+## 2.5.1-preview.9 · 2026-11-06
+
+- 兼容声明适配 DSH 0.2.2-rc.1 的判定机制：旧 `dsh.compatibility.dshReleases` 逐版本表（0.2.1-alpha.1～0.2.1-rc.2）在新版宿主已无消费方，迁移为顶层 `engines.dsh: ">=0.2.1-alpha.1 <0.3.0"`。范围经宿主同版本 semver（7.8.5，`includePrerelease`）逐版本验证：覆盖旧声明全部版本、0.2.2-rc.1 与 0.2.x 后续，排除 0.3.0+。
+- 移除与顶层 `engines.node: ">=22.19.0"` 矛盾的 `dsh.compatibility.node: ">=18"`；`manifestVersion`、`bundle`、`client` 等仍被消费的 manifest 字段保留。
+- Host/Client 全部宿主契约在 0.2.2-rc.1 逐项核对一致（systemPrompt 服务、settings.configure、connection.fetch.register、system-prompt/assemble、客户端 slot、sessions/eventSource/输入壳/commandUi、会话事件与 chunk 字段）；npm test 27 组全过。
+
 ## 2.5.1-preview.8 · 2026-10-28
 
 - 经用户授权，3048 帧 896px 高清帧由无损 WebP 重编码为有损 q90：该层 718 MB → 180 MB（4.00×）。alpha 通道与批准像素逐字节相同；可见区按 alpha 加权 PSNR 最低 35.6 dB、ΔE 最高 1.94。发布包 tgz 由 1.01 GB 降至 467 MB。
