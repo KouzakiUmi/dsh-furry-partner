@@ -11124,6 +11124,7 @@
     "tests/dsh-title-ui.mjs",
     "tests/historical-color-source.mjs",
     "tests/motion-polish-stage.mjs",
+    "tools/requirements-validation.txt",
     "tools/verify-approved-color-consistency.py"
   ],
   "relocatedFiles": {
@@ -14208,7 +14209,8 @@
     "assets/animated/catalog.json": "a26b0d2c32df85196a5b77744b882409fc7ad8f9350f81be2c0e3220336e64c7",
     "config.json": "ebf0413ac6f2f5b7e9146f506f7443644cb98ea931d3ee0f1955b41cc24726ab",
     "package.json": "d7e2cbc1e43c8f892a36070665f192c26bd412f73050de4b1e00df499c1a464e",
-    "tests/approved-color-derivative.mjs": "17474e5cf9b4ad7c26cf903401abd929cd783c9efffa27498dad717317f3da3c"
+    "tests/approved-color-derivative.mjs": "17474e5cf9b4ad7c26cf903401abd929cd783c9efffa27498dad717317f3da3c",
+    "tools/requirements-validation.txt": "c68a50b7b6f7fddfb3a69786aae623b57ecb2e07d63af1b2e2f65956ec5b75bc"
   },
   "adaptationPolicy": "Original hashes remain unchanged. Authorized DSH-only runtime changes bind separate current hashes; relocated unused system prompts retain their original bytes as source history. Approved HD frames were re-encoded to lossy WebP q90 with pixel-identical alpha under explicit user authorization; copiedFileSha256 keeps the approved originals and adaptedFileSha256 binds the shipped bytes, with every approved/shipped pair recorded in assets/animated/provenance/lossy-q90-reencode.json."
 }
